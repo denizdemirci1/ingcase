@@ -1,0 +1,16 @@
+<resources>
+
+  <string name="app_name">ingcase</string>
+
+  <string name="et_hint">username</string>
+  <string name="button_text">submit</string>
+  <string name="error_info">something went wrong</string>
+
+
+
+  <!-- Content Descriptions -->
+  <string name="cd_repo">repository</string>
+
+
+
+</resources>
