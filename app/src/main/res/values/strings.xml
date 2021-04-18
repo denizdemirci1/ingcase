@@ -2,11 +2,18 @@
 
   <string name="app_name">ingcase</string>
 
+  <!-- Menu -->
+  <string name="menu_star">star</string>
+
+  <!-- Home -->
+  <string name="home_title">Home</string>
   <string name="et_hint">username</string>
   <string name="button_text">submit</string>
   <string name="error_info">something went wrong</string>
 
-
+  <!-- Detail -->
+  <string name="star_text">Stars: %1$d</string>
+  <string name="issue_text">Open issues: %1$d</string>
 
   <!-- Content Descriptions -->
   <string name="cd_repo">repository</string>

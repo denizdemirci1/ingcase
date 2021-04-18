@@ -52,6 +52,12 @@ object Libs {
         const val daggerHiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
     }
 
+    object Glide {
+        private const val glide_version = "4.11.0"
+        const val glide = "com.github.bumptech.glide:glide:$glide_version"
+        const val glideCompiler = "com.github.bumptech.glide:compiler:$glide_version"
+    }
+
     object Network {
         private const val retrofit_version = "2.9.0"
         private const val okHttp_version = "4.7.2"

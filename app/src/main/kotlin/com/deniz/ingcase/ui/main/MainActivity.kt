@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.container_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+       /* val appBarConfiguration = AppBarConfiguration(navController.graph)
 
         findViewById<Toolbar>(R.id.toolbar)
-            .setupWithNavController(navController, appBarConfiguration)
+            .setupWithNavController(navController, appBarConfiguration)*/
     }
 
     override fun onSupportNavigateUp() =

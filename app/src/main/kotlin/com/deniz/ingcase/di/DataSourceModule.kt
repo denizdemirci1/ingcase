@@ -1,5 +1,8 @@
 package com.deniz.ingcase.di
 
+import com.deniz.ingcase.data.local.GithubRepoDao
+import com.deniz.ingcase.data.local.RepoLocalDataSource
+import com.deniz.ingcase.data.local.RepoLocalDataSourceImpl
 import com.deniz.ingcase.data.remote.datasources.GithubRepoDataSource
 import com.deniz.ingcase.data.remote.datasources.GithubRepoDataSourceImpl
 import com.deniz.ingcase.data.services.Service
@@ -24,5 +27,13 @@ object DataSourceModule {
         service: Service
     ): GithubRepoDataSource {
         return GithubRepoDataSourceImpl(service)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRepoLocalDataSource(
+        repoDao: GithubRepoDao
+    ): RepoLocalDataSource {
+        return RepoLocalDataSourceImpl(repoDao)
     }
 }

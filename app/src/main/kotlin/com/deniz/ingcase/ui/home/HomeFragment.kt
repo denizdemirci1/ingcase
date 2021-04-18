@@ -54,13 +54,14 @@ class HomeFragment : Fragment() {
                 is Result.Success -> {
                     onLoading(false)
                     onDataReceived(result.data.map {
+                        viewModel.getRepoById(it.id)
                         GithubRepoUIModel(
                             it.id,
                             it.name,
                             it.owner,
                             it.star,
                             it.issues,
-                            true
+                            viewModel.isFavorite.value ?: false
                         )
                     })
                 }
@@ -93,6 +94,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onDataReceived(repos: List<GithubRepoUIModel>) {
+        viewModel.saveReposToLocal(repos)
         adapter?.submitList(repos)
     }
 

@@ -1,5 +1,6 @@
 package com.deniz.ingcase.di
 
+import com.deniz.ingcase.data.local.RepoLocalDataSource
 import com.deniz.ingcase.data.remote.datasources.GithubRepoDataSource
 import com.deniz.ingcase.data.repositories.GithubRepoRepository
 import com.deniz.ingcase.data.repositories.GithubRepoRepositoryImpl
@@ -21,8 +22,9 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideGithubRepoRepository(
-        dataSource: GithubRepoDataSource
+        dataSource: GithubRepoDataSource,
+        localDataSource: RepoLocalDataSource
     ): GithubRepoRepository {
-        return GithubRepoRepositoryImpl(dataSource)
+        return GithubRepoRepositoryImpl(dataSource, localDataSource)
     }
 }

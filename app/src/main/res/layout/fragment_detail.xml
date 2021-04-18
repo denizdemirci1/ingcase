@@ -1,12 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="detail" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/toolbar"
+      style="@style/Widget.MaterialComponents.Toolbar.Primary"
+      android:layout_width="match_parent"
+      android:layout_height="?android:actionBarSize"
+      app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+          android:id="@+id/iv_back"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_8"
+          android:src="@drawable/ic_back_24"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+          android:id="@+id/tv_title"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_32"
+          android:layout_marginEnd="@dimen/margin_16"
+          android:textColor="@color/white"
+          android:textSize="24sp"
+          android:singleLine="true"
+          android:ellipsize="end"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toEndOf="@id/iv_back"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintEnd_toStartOf="@id/button_star"
+          tools:text="Detail" />
+
+        <ImageButton
+          android:id="@+id/button_star"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="@dimen/margin_8"
+          android:background="@android:color/transparent"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:src="@drawable/ic_star_white_empty_24"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <ImageView
+    android:id="@+id/avatar"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_margin="@dimen/margin_8"
+    android:scaleType="centerCrop"
+    app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
+    app:layout_constraintEnd_toEndOf="@id/guideline_vertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/toolbar"
+    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+  <TextView
+    android:id="@+id/tv_owner_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+    app:layout_constraintTop_toTopOf="@id/avatar"
+    tools:text="deniz demirci" />
+
+  <TextView
+    android:id="@+id/tv_star"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_32"
+    android:layout_marginStart="@dimen/margin_8"
+    android:textSize="16sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/avatar"
+    tools:text="stars: 172" />
+
+  <TextView
+    android:id="@+id/tv_issues"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_16"
+    android:layout_marginStart="@dimen/margin_8"
+    android:textSize="16sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tv_star"
+    tools:text="Open issues: 3" />
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.4" />
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

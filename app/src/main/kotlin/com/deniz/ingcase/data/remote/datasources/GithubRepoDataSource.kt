@@ -3,6 +3,7 @@ package com.deniz.ingcase.data.remote.datasources
 import com.deniz.ingcase.data.services.Service
 import com.deniz.ingcase.model.reponse.GithubRepo
 import com.deniz.ingcase.model.util.Result
+import javax.inject.Inject
 
 /**
  * @author: deniz.demirci
@@ -14,7 +15,7 @@ interface GithubRepoDataSource {
     suspend fun fetchUserRepos(username: String): Result<List<GithubRepo>>
 }
 
-class GithubRepoDataSourceImpl(
+class GithubRepoDataSourceImpl @Inject constructor(
     private val service: Service
 ) : GithubRepoDataSource {
 
