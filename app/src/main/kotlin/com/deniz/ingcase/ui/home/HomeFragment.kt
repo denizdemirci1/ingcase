@@ -7,14 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.deniz.ingcase.R
 import com.deniz.ingcase.databinding.FragmentHomeBinding
-import com.deniz.ingcase.model.reponse.GithubRepo
 import com.deniz.ingcase.model.ui.GithubRepoUIModel
-import com.deniz.ingcase.model.util.Result
 import com.deniz.ingcase.ui.home.adapter.RepoAdapter
+import com.deniz.ingcase.util.EventObserver
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -48,12 +46,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.repoLiveData.observe(viewLifecycleOwner, { result ->
-            when (result) {
-                Result.Loading -> onLoading(true)
-                is Result.Success -> {
+        viewModel.event.observe(viewLifecycleOwner, EventObserver { event ->
+            when (event) {
+                HomeViewEvent.Loading -> onLoading(true)
+                HomeViewEvent.OnError -> {
                     onLoading(false)
-                    onDataReceived(result.data.map {
+                    onError()
+                }
+                is HomeViewEvent.OnSuccess -> {
+                    onLoading(false)
+                    onDataReceived(event.repos.map {
                         viewModel.getRepoById(it.id)
                         GithubRepoUIModel(
                             it.id,
@@ -64,10 +66,6 @@ class HomeFragment : Fragment() {
                             viewModel.isFavorite.value ?: false
                         )
                     })
-                }
-                is Result.Error -> {
-                    onLoading(false)
-                    onError()
                 }
             }
         })
